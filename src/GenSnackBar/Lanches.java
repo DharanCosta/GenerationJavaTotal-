@@ -52,31 +52,4 @@ public class Lanches implements Produtos {
 	
 }
 
-
-	/*private String tipoProduto;
-	private String nomeProduto;
-	private int codigo;
-	private double precoUnitario;
-	private int quantidadeProduto;
-	
-	public Produtos getById(int Id);
-	public List<Produtos> getAll();
-
-	@Override
-	public void selecionar() {
-
-	}
-di
-	@Override
-	public int quantosSelecionar() {
-		return 0;
-	}
-
-	@Override
-	public void selecionarTipo() 
-}
-	
-}
-
-*/
 	

@@ -8,14 +8,15 @@ import java.util.Set;
 public class SnackBarMain {
 
 	public static void main(String[] args) {
+		
 		// Variáveis
 		Scanner leia = new Scanner(System.in);
-		int contaPedido=0, escolhaL=0, escolhaB=0, escolhaS=0, escolhaP=0;
+		int contaPedido=0, escolhaP=0;
 		int contXb=0, contXs=0, contXBa=0, contXv=0, contRef=0, contSu=0, contMI=0, contTL=0, contMC=0;
 		double somaTotal=0.0;
+		String escolhaL , escolhaB , escolhaS;
 		
 		//Criando nossa tabela de produtos
-		
 		Lanches l1 = new Lanches(1,"X-Burger",25.00);
 		Lanches l2 = new Lanches(2,"X-Salada",26.00);
 		Lanches l3 = new Lanches(3,"X-Bacon",27.00);
@@ -42,7 +43,7 @@ public class SnackBarMain {
 		ArrayList<Sobremesas> sobremesa = new ArrayList<>();
 		ArrayList<Pedidos> pedido = new ArrayList<>();
 		
-		//Teste de implementação dos dados nas Arrays
+		//Implementação dos dados nas Arrays
 		lanche.add(l1);
 		lanche.add(l2);
 		lanche.add(l3);
@@ -52,6 +53,7 @@ public class SnackBarMain {
 		bebida.add(b3);
 		sobremesa.add(s1);
 		sobremesa.add(s2);
+		//Teste de implementação
 		//System.out.println(lanche);
 		
 		//Início do programa
@@ -66,92 +68,100 @@ public class SnackBarMain {
 					// Escolha o lanche
 					System.out.println("Escolha um lanche: (digite o código)");
 					System.out.println(l1+""+l2+""+l3+""+l4);
-				
-					try {
-						escolhaL=leia.nextInt();	// 	Entrada em inteiro e deixamos o case em string
-					}catch(InputMismatchException erro){
-							do{
-									System.out.println("ERRO!! Você deve digitar uma opção válida"+ erro);
-										escolhaL=leia.nextInt();
-								}while(escolhaL!=1 || escolhaL!=2 || escolhaL!=3 || escolhaL!=4 );
+					escolhaL=leia.next();
 					
-							switch(escolhaL)
-								{
-									case 1:
-									{
+					// Tentativa de Try/Catch
+					/*try {
+						escolha=leia.next();
+					}catch(InputMismatchException erro) {
+						
+						while(escolha!="1" || escolha!="2" || escolha!="3" || escolha!="4")
+						{
+							//System.out.println("ERRO! Digite novamente:");
+						//	escolha=ler.next();
+							}*/
+					//}
+							switch(escolhaL) {
+								
+									case "1":
+									{	
+										//Tentativa de usar set
 										//pedido.add(setNome());
 										pedido.add(p1);
 										contXb++;
 										break;
 									}
-									case 2:{
+									case "2":{
 										pedido.add(p2);
 										contXs++;
 										break;}
-									case 3:{
+									case "3":{
 										pedido.add(p3);
 										contXBa++;
 										break;}
-									case 4:{
+									case "4":{
 										pedido.add(p4);
 										contXv++;
 										break;}
-									//default:{
-									//escolhaL=leia.nextInt();
+									default:{
+										System.out.println("Não computou sua escolha");
 									}
-						
-					
-				
-					
+							}
+							
+					//Escolha de Bebidas
 					System.out.println("═══════════════════════════════════════════════════════");
 					System.out.println("Escolha uma bebida: (digite o código)");
 					System.out.println(b1+""+b2+""+b3);
-					escolhaB=leia.nextInt();
-					switch(escolhaB) {
-						case 1:
-							{
-								pedido.add(p5);
-								contRef++;
-								break;
+						escolhaB=leia.next();
+							switch(escolhaB) {
+									case "1":
+										{
+											pedido.add(p5);
+											contRef++;
+											break;
+										}
+									case "2":{
+											pedido.add(p6);
+											contSu++;
+											break;}
+									case "3":{
+											pedido.add(p7);
+											contMI++;
+											break;}
+									default:{
+										System.out.println("Não computou sua escolha");
+									}
 							}
-						case 2:{
-								pedido.add(p6);
-								contSu++;
-								break;}
-						case 3:{
-								pedido.add(p7);
-								contMI++;
-								break;}
-							//default'':
-								//pedido.add("--");
-					}
+					
+					//Escolha de Sobremesas		
 					System.out.println("═══════════════════════════════════════════════════════");
 					System.out.println("Escolha uma sobremesa: (digite o código)");
 					System.out.println(s1+""+s2);
-					escolhaS=leia.nextInt();
-					
-					switch(escolhaS) {
-					case 1:
-						{
-							pedido.add(p8);
-							contTL++;
-							break;
-						}
-					case 2:{
-							pedido.add(p9);
-							contMC++;
-							break;}
-						//default'':
-							//pedido.add("--");
-					}
+						escolhaS=leia.next();
+							switch(escolhaS) {
+									case "1":
+										{
+											pedido.add(p8);
+											contTL++;
+											break;
+										}
+									case "2":{
+											pedido.add(p9);
+											contMC++;
+											break;}
+									default:{
+										System.out.println("Não computou sua escolha");
+											}
+							}
+					//Fazer mais um pedido?		
 					System.out.println("═══════════════════════════════════════════════════════");
 					System.out.println("Gostaria de realizar outro pedido?");
 					System.out.println("1 - SIM | 2 - NÃO ");
-					escolhaP=leia.nextInt();
-					
+						escolhaP=leia.nextInt();
+						
 				}while(escolhaP!=2);
 		
-		
+		// Exibição do resultado final
 		System.out.println("══════════════════════RECIBO═════════════════════");
 		System.out.println("/n");
 		System.out.println("O pedido final foi:" );
@@ -162,33 +172,7 @@ public class SnackBarMain {
 		System.out.println(pedido);
 		System.out.println("══════════════════════RECIBO═════════════════════");
 		System.out.println("O valor total do pedido foi de R$"+somaTotal);
-		
 	
-		
-		/*
-		linhaDetalhe()
-		public static void linhaDetalhe() {
-			System.out.println("═══════════════════════════════════════════════════════");
-		}
-		*/
-		
-		/*linhaDetalhe();
-		System.out.println("Bem-vindes ao Snack Bar Generation!");
-		System.out.println("Mundando vidas, acessando conhecimento!!!");
-		linhaDetalhe();
-		System.out.println();
-		// menu inicial
-		System.out.println("[1] - COMPRAR PRODUTOS");
-		System.out.println("[2] - GERENCIAR ESTOQUE");
-		System.out.println("[3] - SAIR");
-		System.out.println();
-		System.out.print("DIGITE A OPÇÃO: ");
-		char opcaoMenu = leia.next().charAt(0);
-		switch (opcaoMenu) 
-			public static void linhaDetalhe() {
-				System.out.println("═══════════════════════════════════════════════════════");
-		*/
-	}
 
-		
+	}
 }
